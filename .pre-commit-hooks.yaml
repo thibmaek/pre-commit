@@ -1,0 +1,31 @@
+- id: disallow-yml
+  name: Disallow YML
+  description: Disallows the .yml file extension in favour of .yaml for YAML files.
+  language: script
+  entry: hooks/disallow-yml.sh
+  files: .yml$
+
+- id: shellcheck
+  name: Shellcheck
+  description: Performs linting on shell scripts
+  language: script
+  entry: hooks/shellcheck.sh
+  files: \.sh$
+  require_serial: true
+
+- id: typescript
+  name: Compile TypeScript
+  description: Compile TS files individually with tsc
+  entry: hooks/tsc-compile-file.sh
+  language: script
+  files: \.tsx?$
+
+- id: shfmt
+  name: shfmt
+  description: Formats shell scripts
+  minimum_pre_commit_version: 2.4.0
+  language: golang
+  additional_dependencies: [mvdan.cc/sh/v3/cmd/shfmt]
+  entry: shfmt
+  args: [-w]
+  files: \.sh$
