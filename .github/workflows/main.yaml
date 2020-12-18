@@ -1,0 +1,23 @@
+name: Release new version
+
+on: push
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Lint hooks
+        uses: github/super-linter@master
+        env:
+          VALIDATE_YAML: false
+          VALIDATE_MARKDOWN: false
+
+      # - name: Create GitHub release
+      #   uses: Roang-zero1/github-create-release-action@master
+      #   with:
+      #     version_regex: ^v[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
