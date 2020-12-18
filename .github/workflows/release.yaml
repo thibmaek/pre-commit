@@ -3,11 +3,10 @@ name: Release new version
 on: push
 
 jobs:
-  release:
+  lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
+      - uses: actions/checkout@master
 
       - name: Lint hooks
         uses: github/super-linter@master
@@ -16,6 +15,11 @@ jobs:
           VALIDATE_MARKDOWN: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  release:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@master
       - name: Create GitHub release
         uses: Roang-zero1/github-create-release-action@master
         with:
