@@ -25,7 +25,7 @@ repos:
     hooks:
       - id: disallow-yml
       - id: shellcheck
-      - id: tsc
+      - id: typescript
       - ...
 ```
 
@@ -40,7 +40,7 @@ These hooks are currently available:
 | `disallow-yaml` | Disallows the usage of the .yml file extension in favour of .yaml
 | `shellcheck` | Runs shellcheck to lint shell scripts
 | `shfmt` | Runs shfmt to format shell scripts
-| `tsc` | Compiles individual files with the Typescript Compiler (`tsc`) | This will create a temporary `tsconfig.json` with only the files passed by pre-commit in the `include` directive. The file is automatically deleted afterwards.
+| `typescript` | Compiles individual files with the Typescript Compiler (`tsc`) | This will create a temporary `tsconfig.json` with only the files passed by pre-commit in the `include` directive. The file is automatically deleted afterwards.
 
 ## Maintainer(s)
 
