@@ -8,8 +8,8 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - name: Lint hooks
-        uses: github/super-linter@master
+      - name: 'Lint hooks'
+        uses: github/super-linter@main
         env:
           VALIDATE_YAML: false
           VALIDATE_MARKDOWN: false
@@ -20,7 +20,7 @@ jobs:
     needs: lint
     steps:
       - uses: actions/checkout@master
-      - name: Create GitHub release
+      - name: 'Create GitHub release'
         uses: Roang-zero1/github-create-release-action@master
         with:
           version_regex: ^v[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+
